@@ -1,7 +1,13 @@
+using OidcServer.Repositories;
+using OidcServer.Repositories.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddSingleton<IUserRepository, InMemoryUserRepository>();
+builder.Services.AddSingleton<ICodeItemRepository, InMemoryCodeItemRepository>();
 
 var app = builder.Build();
 
